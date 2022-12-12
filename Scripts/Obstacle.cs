@@ -13,7 +13,7 @@ public class Obstacle : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        //killing the player
+        //killing the player if collision occurs between obstacle and player
         if (collision.gameObject.name == "Player")
         {
             playerMovement.Die();
