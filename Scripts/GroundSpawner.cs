@@ -9,11 +9,12 @@ public class GroundSpawner : MonoBehaviour
 
     public void SpawnTile(bool spawnItems)
     {
-        GameObject temp = Instantiate(groundTile, nextSpawnPoint, Quaternion.identity);
-        nextSpawnPoint = temp.transform.GetChild(1).transform.position;
+        GameObject temp = Instantiate(groundTile, nextSpawnPoint, Quaternion.identity); // spawning the ground tile
+        nextSpawnPoint = temp.transform.GetChild(1).transform.position; // updating the next spawn point
 
         if (spawnItems)
         {
+            // spawning obstacles and coins from the GroundTile script
             temp.GetComponent<GroundTile>().SpawnObstacle();
             temp.GetComponent<GroundTile>().SpawnCoins();
         }
@@ -29,7 +30,7 @@ public class GroundSpawner : MonoBehaviour
             }
             else
             {
-                SpawnTile(true);
+                SpawnTile(true); // spawning obstacles and coins only after the first 3 ground tiles
             }
         }
     }
