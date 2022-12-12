@@ -14,10 +14,10 @@ public class GameManager : MonoBehaviour
     public PlayerMovement playerMovement;
     public void IncrementScore()
     {
-        score++;
+        score++; // increasing the score with each coin collected
         scoreText.text = "Score : " + score;
         PlayerPrefs.SetInt("score", score);
-        // increasing the player's speed
+        // increasing the player's speed as the game progresses
         playerMovement.speed += playerMovement.speedIncreasePerPoint;
     }
     private void Awake()
@@ -30,13 +30,14 @@ public class GameManager : MonoBehaviour
         Scene current = SceneManager.GetActiveScene();
         if(current.name == "Restart")
         {
-            scoreText.text = "Score : " + PlayerPrefs.GetInt("score");
+            scoreText.text = "Score : " + PlayerPrefs.GetInt("score"); // displaying the final score
         }
     }
 
     // Update is called once per frame
     void Update()
     {
+        // Updating the high score using PlayerPrefs
         if (score > PlayerPrefs.GetInt("highScore"))
         {
             highScore = score;
